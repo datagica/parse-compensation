@@ -1,0 +1,29 @@
+{
+  "name": "@datagica/parse-compensation",
+  "version": "0.0.0",
+  "description": "Parse compensation, remuneration, salary, pay, wage.. from a job offer",
+  "main": "./lib/parse-compensation.js",
+  "scripts": {
+    "test": "node_modules/.bin/mocha --harmony --bail --require chai tests/*.js"
+  },
+  "author": "Julian Bilcke <julian.bilcke@datagica.com>",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/datagica/parse-compensation.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "chai": "3.2.0",
+    "chai-fuzzy": "1.6.0",
+    "deep-eql": "0.1.3",
+    "ghooks": "0.3.2",
+    "lodash": "3.10.1",
+    "mocha": "2.3.3",
+    "underscore": "1.8.3"
+  }
+}
