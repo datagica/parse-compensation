@@ -42,6 +42,15 @@ Currency is the currency symbol (eg. €, USD).
 ```javascript
 import parseCompensation from "@datagica/parse-compensation";
 
+parseCompensation("compensation: $90K").then(..).catch(..)
+// will output:
+[
+  {
+    currency: "MXN",
+    yearly: 450000
+  }
+]
+
 parseCompensation("salario: 450K MXN").then(..).catch(..)
 // will output:
 [

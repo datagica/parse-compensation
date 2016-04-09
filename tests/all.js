@@ -13,19 +13,19 @@ describe('@datagica/parse-compensation', () => {
 
       // dollars
       {
-        input: "compensation: $80K",
+        input: "compensation: $80K/mo",
         output: [{currency:"USD",yearly:80000}]
       },
 
       // pounds
       {
-        input: "salary: £42K",
+        input: "salary: £42K/mo",
         output: [{currency:"GBP",yearly:42000}]
       },
 
       // decimal number
       {
-        input: "salary: £55.5K",
+        input: "salary: £55.5K/mo",
         output: [{currency:"GBP",yearly:55500}]
       },
     ]
@@ -49,19 +49,19 @@ describe('@datagica/parse-compensation', () => {
       const tests = [
       // french
       {
-        input: "salaire : 32K€",
+        input: "salaire mensuel : 32K€",
         output: [{currency:"EUR",yearly:32000}]
       },
       {
-        input: "salaire annuel 30K €",
+        input: "salaire : 30K € par mois",
         output: [{currency:"EUR",yearly:30000}]
       },
       {
-        input: "salaire brut : 80K €",
+        input: "salaire brut : 80K € / mois",
         output: [{currency:"EUR",yearly:80000}]
       },
       {
-        input: "rémunération : 50 K€",
+        input: "rémunération : 50 K€ / mois",
         output: [{currency:"EUR",yearly:50000}]
       }
     ]
