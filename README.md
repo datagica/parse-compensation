@@ -1,16 +1,11 @@
 # @datagica/parse-compensation
 
-Parse compensation, remuneration, salary, pay, wage.. from a job offer
+Parse compensation, remuneration, salary, pay, wage.. from a job offer.
 
-Supported languages:
+Supported languages (but more to come):
 
 * english
 * french
-* chinese
-* japanese
-* russian
-* spanish
-* portuguese
 
 Supported currencies:
 
@@ -23,16 +18,6 @@ Supported currencies:
 * mxn
 * brl
 
-Supported compensation formats:
-
-* <label> <number> <unit> <currency>
-* <label> <currency> <number> <unit>
-
-
-Label is a prefix label (eg. "salary" or "salario").
-Number is the actual value (eg. 80, 4.2). Unit is the scale (eg. K, M).
-Currency is the currency symbol (eg. €, USD).
-
 ## Installation
 
     $ npm install --save @datagica/parse-compensation
@@ -42,27 +27,54 @@ Currency is the currency symbol (eg. €, USD).
 ```javascript
 import parseCompensation from "@datagica/parse-compensation";
 
-parseCompensation("compensation: $90K").then(..).catch(..)
-// will output:
-[
-  {
-    currency: "MXN",
-    yearly: 450000
-  }
-]
+/* IMPORTANT: the API is promise-based, use it like this:
+parseCompensation("salary: $10/hour").then(result => {
+  console.log(result)
+})
+*/
 
-parseCompensation("salario: 450K MXN").then(..).catch(..)
-// will output:
-[
-  {
-    currency: "MXN",
-    yearly: 450000
+// english
+const prom = parseCompensation("salary: £15 per hour");
+// returns a promise that will resolve to:
+{
+  hourly: {
+    currency: "GBP",
+    value: 15
+  },
+  monthly: {
+    currency: "GBP",
+    value: 2400
   }
-]
+}
+const prom = parseCompensation("compensation: $4k/mo");
+{
+  hourly: {
+    currency: "USD",
+    value: 25
+  },
+    monthly: {
+    currency: "USD",
+    value: 4000
+  }
+}
+
+// french
+const prom = parseCompensation("salaire : 14€/heure");
+{
+  hourly: {
+    currency: "EUR",
+    value: 14
+  },
+  monthly: {
+    currency: "EUR",
+    value: 2240
+  }
+}
 ```
 
 ## TODO
 
-- parse monthly salary format
-- parse tax/gross salary informations
-- parse more complex compensation systems (ex. dividends, shares, variable compensation)
+- support yearly format
+- support more languages
+- support tax/gross salary informations
+- support more complex compensation systems (ex. dividends, shares, variable compensation)
