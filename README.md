@@ -7,6 +7,11 @@ Supported languages (but more to come):
 * english
 * french
 
+May more or less work (not much tested yet):
+* japanese
+* chinese
+* arabic
+
 Supported currencies:
 
 * usd

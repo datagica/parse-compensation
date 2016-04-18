@@ -639,4 +639,73 @@ describe('@datagica/parse-compensation', () => {
 
   })
 
+  describe('Chinese:', () => {
+
+    it('should parse currencies', done => {
+
+      const tests = [{
+        input: {
+          amount: "$1000/月",
+          locale: "zh"
+        },
+        output: "USD"
+      }, {
+        input: {
+          amount: "$每月1000",
+          locale: "zh"
+        },
+        output: "USD"
+      }]
+
+      Promise.all(tests.map(test => {
+        const output = parseCompensation.parseCurrency(test.input.amount, test.input.locale)
+          //console.log("output: " + JSON.stringify(output));
+        expect(output).to.be.like(test.output)
+        return Promise.resolve(true)
+      })).then(ended => {
+        //console.log(`test ended`)
+        done()
+        return true
+      }).catch(exc => {
+        console.error(exc)
+      })
+
+    })
+
+    it('should parse single values (monthly)', done => {
+
+      const tests = [{
+        input: {
+          amount: "$1000/月",
+          locale: "zh",
+          currency: "USD"
+        },
+        output: 1000
+      }, {
+        input: {
+          amount: "$每月1000",
+          locale: "zh",
+          currency: "USD"
+        },
+        output: 1000
+      }]
+
+      Promise.all(tests.map(test => {
+        const output = parseCompensation.parseValue(test.input.amount, test.input.locale, test.input.currency)
+        //console.log("output: " + JSON.stringify(output));
+        expect(output).to.be.like(test.output)
+        return Promise.resolve(true)
+      })).then(ended => {
+        //console.log(`test ended`)
+        done()
+        return true
+      }).catch(exc => {
+        console.error(exc)
+      })
+
+    })
+
+  })
+
+
 })
