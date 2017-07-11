@@ -12,11 +12,7 @@
     "type": "git",
     "url": "https://github.com/datagica/parse-compensation.git"
   },
-  "publishConfig": {
-    "access": "public"
-  },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "chai": "3.2.0",
     "chai-fuzzy": "1.6.0",
